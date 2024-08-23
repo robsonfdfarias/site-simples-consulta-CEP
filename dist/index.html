@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/cep.js"></script>
+    <script src="js/cepFetch.js"></script>
+    <script src="js/layout_cep.js"></script>
+</head>
+<body>
+    <div id="geral">
+        <div id="central">
+            <div id="form">
+                <h1>Pesquisar CEP</h1>
+                <input type="cep" name="cep" id="cep" placeholder="Inseri o cep (ex: 69099-999)">
+                <button id="pesquisarCep">Pesquisar</button>
+                <link rel="stylesheet" href="css/styles.css">
+            </div>
+            <div id="retorno"></div>
+        </div>
+    </div>
+    <div id="geralCar">
+        <div id="centralCar">
+            <img src="img/carregando.gif" alt="Carregando"><br>
+            Carregando
+        </div>
+    </div>
+    <script>
+        document.getElementById('pesquisarCep').addEventListener('click', async function(){
+            console.log(document.getElementById('geralCar'))
+            const cepEle = document.getElementById('cep');
+            let cep;
+            if(cepEle.value.trim() === ''){
+                cep = "60130240";
+                alert('insira um cep');
+                return;
+            }else{
+                cep = cepEle.value;
+            }
+            const cepFetch = new CepFetch();
+            const address = await cepFetch.fetch(cep, document.getElementById('geralCar'));
+            if(address!=null){
+                const layout = new LayoutCep(new Cep(address));
+                document.getElementById('retorno').innerHTML = layout.layout_2();
+            }
+        })
+    </script>
+</body>
+</html>
