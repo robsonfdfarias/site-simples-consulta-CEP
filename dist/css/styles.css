@@ -73,18 +73,27 @@ h1 {
     padding: 20px;
     background-color: #fff;
     padding-bottom: 40px;
+    align-content: center;
+    text-align: center;
+    border-radius: 5px;
 }
 
 #form input[type="cep"]{
     width: 60%;
     padding: 5px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    border: 1px solid #cdcdcd;
+    height: 40px;
 }
 
 #form button{
     width: 30%;
     padding: 5px 10px;
     font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #cdcdcd;
+    height: 52px;
 }
 
 #geralCar{
