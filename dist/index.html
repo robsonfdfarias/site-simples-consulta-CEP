@@ -28,18 +28,9 @@
     </div>
     <script>
         document.getElementById('pesquisarCep').addEventListener('click', async function(){
-            console.log(document.getElementById('geralCar'))
             const cepEle = document.getElementById('cep');
-            let cep;
-            if(cepEle.value.trim() === ''){
-                cep = "60130240";
-                alert('insira um cep');
-                return;
-            }else{
-                cep = cepEle.value;
-            }
             const cepFetch = new CepFetch();
-            const address = await cepFetch.fetch(cep, document.getElementById('geralCar'));
+            var address = await cepFetch.fetch(cepEle.value, document.getElementById('geralCar'));
             if(address!=null){
                 const layout = new LayoutCep(new Cep(address));
                 document.getElementById('retorno').innerHTML = layout.layout_2();
